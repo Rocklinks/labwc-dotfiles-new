@@ -1,0 +1,59 @@
+# Desktop Login sound
+paplay ~/.config/labwc/sound/desktop-login.oga >/dev/null 2>&1 &
+
+# Device plugged audio
+bash ~/.config/labwc/device-monitor.sh >/dev/null 2>&1 &
+
+# Set background 
+swww-daemon >/dev/null 2>&1 &
+
+# Keyring
+/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh >/dev/null 2>&1 &
+
+# Polkit 
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 >/dev/null 2>&1 &
+
+# Gtk Theme Refresh
+bash ~/.config/labwc/gtk.sh >/dev/null 2>&1 &
+
+# Clipboard
+wl-clip-persist --clipboard regular &
+wl-paste --type text --watch cliphist store &
+wl-paste --type image --watch cliphist store &
+
+# Waybar
+(sleep 0.5; waybar --log-level off >/dev/null 2>&1 &)
+
+# Xfce4 Panel
+(sleep 1; xfce4-panel >/dev/null 2>&1 &)
+
+# NetworkManager Applet
+(sleep 2; nm-applet >/dev/null 2>&1 &)
+
+# Blueman Applet
+(sleep 3; blueman-applet >/dev/null 2>&1 &)
+
+# kdeconnect indicator
+(sleep 2; kdeconnect-indicator >/dev/null 2>&1 &)
+
+# labwc 
+systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+
+# Notification 
+swaync >/dev/null 2>&1 &
+
+# Battery Notification
+(sleep 2; ~/.config/waybar/scripts/low-bat-notification.sh >/dev/null 2>&1 &)
+
+# Idle device manager
+swayidle -w \
+    timeout 300 "~/.config/labwc/idle/brightness_ctrl.sh --fade-out" \
+    resume "~/.config/labwc/idle/brightness_ctrl.sh --fade-in" \
+    timeout 600 "loginctl lock-session" \
+    timeout 1800 "systemctl suspend" \
+    lock "~/.config/labwc/idle/lock_ctrl.sh" \
+    before-sleep "~/.config/labwc/idle/sleep_ctrl.sh" \
+    after-resume "~/.config/labwc/idle/brightness_ctrl.sh --fade-in" \
+    >/dev/null 2>&1 &
+
