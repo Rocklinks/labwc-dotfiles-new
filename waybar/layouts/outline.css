@@ -1,0 +1,134 @@
+/* Layout: Outline */
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrains Mono", "Iosevka Term", Inter, Adwaita,  Roboto, Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: @bar_bg;
+    color: @bar_fg;
+}
+
+tooltip {
+    background-color: @bar_bg;
+    color: @bar_fg;
+    border: 2px solid @hover_bg;
+    border-radius: 8px;
+}
+tooltip label {
+    color: @bar_fg;
+    text-shadow: none;
+}
+
+/* --- Modules: Base --- */
+#clock,
+#network,
+#custom-updates,
+#ext-workspaces,
+#bluetooth,
+#battery,
+#power-profiles-daemon,
+#backlight,
+#pulseaudio,
+#memory,
+#custom-clip,
+#custom-snip,
+#custom-taskmanager,
+#custom-notification,
+#custom-theme-switcher,
+#tray,
+#idle_inhibitor,
+#custom-power,
+#custom-launcher {
+    background: @module_bg;
+    color: @module_fg;
+    padding: 0px 13px;
+    margin: 4px 2px 4px 2px;
+    border: 2px solid transparent; 
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+/* --- Modules: Strip --- */
+
+
+
+
+#custom-launcher {
+    color: @launcher;
+    font-weight: bold;
+}
+
+#tray {
+    background: @special;
+}
+
+#custom-power {
+    color: @power;
+}
+#keyboard-state {
+    background: transparent;
+}
+
+#keyboard-state label.locked {
+    background: @special;
+    color: @module_fg; 
+    padding: 0px 12px;
+    margin: 4px 2px 4px 2px;
+    border-radius: 8px;
+}
+#network.disconnected,
+#network.disabled {
+    color: @power; 
+}
+
+/* --- Hover Effects --- */
+
+#clock:hover,
+#network:hover,
+#backlight:hover,
+#pulseaudio:hover,
+#bluetooth:hover,
+#custom-clip:hover,
+#custom-snip:hover,
+#custom-taskmanager:hover,
+#custom-notification:hover,
+#custom-theme-switcher:hover,
+#idle_inhibitor:hover,
+#custom-updates:hover,
+#ext-workspaces:hover,
+#battery:hover,
+#power-profiles-daemon:hover,
+#custom-thunar:hover {
+    color: @hover_bg;
+    border-color: @hover_bg;
+}
+
+#custom-launcher:hover {
+    color: @launcher;
+    border-color: @launcher;
+}
+
+#custom-todo:hover,
+#custom-countdown:hover {
+    border-color: @special;
+}
+
+
+#custom-power:hover {
+    color: @power;
+    border-color: @power;
+}
+
+#ext-workspaces button {
+    color: @module_fg;
+}
+
+/* active workspace in @power color */
+#ext-workspaces button.active {
+    color: @power;
+}

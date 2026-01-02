@@ -1,0 +1,300 @@
+  /////////////////////////////////
+  //                             //
+  //  // Waybar configuration//  //
+  //                             //
+  /////////////////////////////////
+
+  {
+      "layer": "top",
+      "position": "top",
+      "height": 38,
+      "spacing": 0,
+      "margin-top": 0,
+      "margin-bottom": 0,
+      "reload_style_on_change": true,
+
+      /////////////////////////////////////////////
+      //                                         //
+      //  // Choose the order of the modules //  //
+      //                                         //
+      /////////////////////////////////////////////
+
+      "modules-left": ["custom/launcher", "ext/workspaces", "custom/updates"],
+      "modules-center": ["clock","custom/notification"],
+      "modules-right": ["tray", "group/group-tools", "network", "bluetooth", "pulseaudio", "backlight", "battery", "custom/power"],
+
+
+//// Waybar Modules Configuration
+
+
+
+      "wlr/taskbar":
+      {
+          "format": "{icon}",
+          "icon-size": 22,
+          "icon-theme": "Papirus",
+          "tooltip-format": "{title:.50}",
+          "on-click": "minimize-raise",
+          "on-click-middle": "close",
+          "on-click-right": "fullscreen"
+      },
+
+      "keyboard-state":
+      {
+          "capslock": true,
+          "format": "{icon}",
+          "format-icons":
+          {
+              "locked": " Caps ",
+              "unlocked": ""
+          }
+      },
+
+      "idle_inhibitor":
+      {
+          "format": "{icon}",
+          "format-icons":
+          {
+              "activated": "",
+              "deactivated": ""
+          }
+      },
+        "ext/workspaces": {
+            "format": "{name}",
+            "on-click": "activate",
+            "persistent-workspaces": {
+                "1": [],
+                "2": [],
+                "3": [],
+                "4": [],
+                "5": []
+            }
+            // ...other options
+        },
+        "custom/updates": {
+            "format": "  {}",
+            "escape": true,
+            "return-type": "json",
+            "exec": "~/.config/waybar/scripts/updates.sh",
+            "interval": 1800,
+            "signal": 1,
+            "hide-empty-text": true,
+            "on-click": "xfce4-terminal -e 'sudo pacman -Syu --noconfirm'"
+        },
+
+      "tray":
+      {
+          "icon-size": 20,
+          "spacing": 10,
+          "show-passive-items": true
+      },
+
+      "clock":
+      {
+          "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+          "format-alt": "{:%d-%m-%Y}",
+          "format": "{:%a %I:%M %p}"
+      },
+    // SwayNC
+    "custom/notification": {
+        "tooltip-format": "Left: Notifications\nRight: Do not disturb",
+        "format": "{icon}",
+        "format-icons": {
+        "notification": "󰂚",              // bell-ring (notifications present)
+        "none": "󰂛",                      // bell (no notifications)
+        "dnd-notification": "󰂜",          // bell-off (DND, notifications present)
+        "dnd-none": "󰂜",                  // bell-off (DND, no notifications)
+        "inhibited-notification": "󰂝",    // bell-cancel (inhibited, notifications)
+        "inhibited-none": "󰂝",            // bell-cancel (inhibited, none)
+        "dnd-inhibited-notification": "󰂞",// bell-remove (DND + inhibited, notifications)
+        "dnd-inhibited-none": "󰂞"
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    },
+
+      "backlight":
+      {
+          "device": "acpi_video0", // Assuming acpi_video0, adjust if needed
+          "tooltip": true,
+          "tooltip-format": "Nightlight",
+          "format": "{percent}% {icon}",
+          "format-icons": ["", ""],
+          "on-scroll-up": "brightnessctl s +5%",
+          "on-scroll-down": "brightnessctl s 5%-",
+          "on-click": "killall rofi || bash ~/.config/rofi/nightlight/night-light.sh"
+      },
+
+      "pulseaudio":
+      {
+          "format": "{volume}% {icon}",
+          "tooltip": true,
+          "tooltip-format": "Nowplaying",
+          "format-bluetooth": "{volume}% {icon}",
+          "format-bluetooth-muted": "{icon} {format_source}",
+          "format-muted": " {format_source}",
+          "format-source": "",
+          "format-source-muted": "",
+          "format-icons":
+          {
+              "headphone": "",
+              "hands-free": "",
+              "headset": "",
+              "phone": "",
+              "portable": "",
+              "car": "",
+              "default": ["", "", ""]
+          },
+          "on-click": "killall rofi || bash ~/.config/rofi/nowplaying/nowplaying.sh 2>/dev/null",
+          "on-click-right": "pavucontrol",
+          "on-click-middle": "bash ~/.config/waybar/scripts/mute.sh 2>/dev/null"
+      },
+
+
+      "network": {
+        "format-wifi": "{icon} {essid}",
+        "format-ethernet": "",
+        "format-linked": "",
+        "format-disconnected": "󱛅 ",
+        "format-disabled": "󱚼 ",
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "tooltip-format-wifi": "  {essid} ({signalStrength}%)\nIP: {ipaddr}\nFreq: {frequency}GHz",
+        "tooltip-format-ethernet": "  {ifname}\nIP: {ipaddr}/{cidr}",
+        "tooltip-format-disconnected": "Disconnected",
+        "format-icons": ["󰤯 ", "󰤟 ", "󰤢 ", "󰤥 ", "󰤨 "],
+        "on-click": "killall rofi || bash ~/.config/rofi/wifi/wifi.sh",
+        "on-click-right": "nm-connection-editor"
+      },
+
+        // Battery
+        "battery": {
+            "interval": 1,
+            "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+            },
+            "format": "{icon} {capacity}%",
+            "format-charging": "  {capacity}%",
+            "format-plugged": "  {capacity}%",
+            "format-alt": "{icon}  {time}",
+            // "format-good": "", // An empty format will hide the module
+            // "format-full": "",
+            "format-icons": [
+            " ",
+            " ",
+            " ",
+            " ",
+            " "
+            ],
+            "on-click": ""
+        },
+
+        // Power Profiles Daemon
+        "power-profiles-daemon": {
+            "format": "{icon}",
+            "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+            "tooltip": true,
+            "format-icons": {
+            "default": "",
+            "performance": "",
+            "balanced": "",
+            "power-saver": ""
+            }
+        },
+
+
+
+//// Apps section 
+
+      "custom/launcher":
+      {
+          "format": "<big>󰣇\u00a0</big>",
+          "tooltip": true,
+          "tooltip-format": "Menu\nRight click to customize",
+          "on-click": "killall rofi 2>/dev/null || bash ~/.config/rofi/launchers/launcher.sh 2>/dev/null",
+          "on-click-right": "killall rofi 2>/dev/null || bash ~/.config/waybar/scripts/customize.sh 2>/dev/null"
+      },
+
+        "bluetooth": {
+            "format": " {status}",
+            "format-disabled": "",
+            "format-off": "",
+            "interval": 30,
+            "on-click": "blueman-manager",
+            "format-no-controller": "󰰁"
+        },
+//// Tools Section
+       
+
+      "group/group-tools":
+      {
+          "orientation": "inherit",
+          "drawer":
+          {
+              "transition-duration": 500,
+              "children-class": "other-apps",
+              "transition-left-to-right": false
+          },
+          "modules": [
+              //"keyboard-state",
+              "custom/clip",
+              "custom/snip",
+              "idle_inhibitor",
+              "custom/theme-switcher",
+              "power-profiles-daemon"
+          ]
+      },
+
+      "custom/clip":
+      {
+          "format": "",
+          "tooltip": true,
+          "tooltip-format": "Clipboard",
+          "on-click": "killall rofi 2>/dev/null || bash ~/.config/rofi/clipboard/clipboard.sh 2>/dev/null",
+          "on-click-right": "cliphist wipe && wl-copy -c && notify-send 'Clipboard Manager' 'Clipboard has been wiped'"
+      },
+        "power-profiles-daemon": {
+            "format": "{icon}",
+            "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+            "tooltip": true,
+            "format-icons": {
+            "default": "",
+            "performance": "",
+            "balanced": "",
+            "power-saver": ""
+            }
+        },
+      
+      "custom/theme-switcher":
+      {
+          "format": "<big>󰔎\u00a0</big>",
+          "tooltip": true,
+          "tooltip-format": "Light/Dark",
+          "on-click": "bash ~/.config/waybar/scripts/toggle-theme.sh 2>/dev/null"
+      },
+            
+      "custom/snip":
+      {
+          "format": "",
+          "tooltip": true,
+          "tooltip-format": "Screenshot",
+          "on-click": "killall rofi 2>/dev/null || bash ~/.config/rofi/screen-tool/screen-tool.sh 2>/dev/null"
+      },
+
+
+//// Powermenu
+
+
+      "custom/power":
+      {
+          "format": "<b></b>",
+          "tooltip": true,
+          "tooltip-format": "Powermenu",
+          "on-click": "killall rofi 2>/dev/null || bash ~/.config/rofi/powermenu/powermenu.sh 2>/dev/null"
+      }
+  }
