@@ -301,7 +301,7 @@ def print_custom_footer(handle, is_static):
 		{
 			"label": "Terminal", 
 			"action": "Execute", 
-			"cmd": "foot", 
+			"cmd": "xfce4-terminal", 
 			"icons": ["terminal", "x-terminal-emulator", "org.gnome.Terminal"]
 		},
 		{
@@ -309,12 +309,6 @@ def print_custom_footer(handle, is_static):
 			"action": "Reconfigure", 
 			"cmd": None, 
 			"icons": ["system-reboot", "view-refresh", "reload"]
-		},
-		{
-			"label": "Proton VPN", 
-			"action": "Execute", 
-			"cmd": "protonvpn-app", 
-			"icons": ["proton-vpn-logo", "network-vpn", "nm-vpn-standalone-lock"]
 		},
 		{
 			"label": "Background", 
