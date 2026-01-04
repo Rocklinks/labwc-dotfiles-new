@@ -20,10 +20,9 @@
   <theme>
     <name>matugen-labwc</name>
     <font name="Roboto" size="10"/>
-    <cornerRadius>0</cornerRadius>
-    <icon>ColorFlow.Agresive.Color</icon>
+    <cornerRadius>9</cornerRadius>
+    <icon>Papirus-Dark</icon>
   </theme>
-
   <!-- Key bindings -->
   <keyboard>
     <default/>
@@ -116,11 +115,15 @@
     </keybind>
     <numlock>on</numlock>
     <keybind key="W-a">
-      <action name="Execute" command="~/.config/rofi/launchers/launcher.sh"/>
+      <action name="Execute" command=" ~/.config/rofi/launchers/launcher.sh"/>
     </keybind>
     <keybind key="W-x">
       <action name="Execute" command="~/.config/rofi/powermenu/powermenu.sh"/>
     </keybind>
+    <keybind key="W-q">
+        <action name="Close"/>
+    </keybind>
+
   </keyboard>
   <!-- mouse binding -->
   <mouse>
@@ -178,18 +181,8 @@
       <leftHanded>no</leftHanded>
     </device>
   </libinput>
-  <!--windows rule -->
-  <windowRules>
-    <windowRule title="Attention">
-      <action name="ToggleAlwaysOnTop"/>
-    </windowRule>
-  </windowRules>
-  <resistance>
-    <unMaximizeTreshold>100</unMaximizeTreshold>
-  </resistance>
-  <resize>
-    <popupShow>Never</popupShow>
-  </resize>
+
+  <!--Dock -->
   <dock>
     <position>Bottom</position>
     <floatingX>0</floatingX>
@@ -208,4 +201,16 @@
     <showDelay>300</showDelay>
     <moveButton>Middle</moveButton>
   </dock>
+  <!--windows rule -->
+  <windowRules>
+    <windowRule title="Attention">
+      <action name="ToggleAlwaysOnTop"/>
+    </windowRule>
+  </windowRules>
+  <resistance>
+    <unMaximizeTreshold>100</unMaximizeTreshold>
+  </resistance>
+  <resize>
+    <popupShow>Never</popupShow>
+  </resize>
 </labwc_config>
