@@ -23,6 +23,7 @@ A ready to use configuration for **Labwc** wayland compositor with 19 preconfigu
   ## Wallpaper
 ![Dynamic Wallpaper Showcase1](https://github.com/Rocklinks/labwc-dotfiles-new/blob/main/Screenshot_20260102-152501.png) 
 ![Showcase 2](https://github.com/Rocklinks/labwc-dotfiles-new/blob/main/Screenshot_20260104-094835.png)
+![Showcase 2](https://github.com/Rocklinks/labwc-dotfiles-new/blob/main/Screenshot_2026-01-04_10-03-56.png)
 *Generated theme colors from this wallpaper using Matugen*
 
   ## Dependencies
