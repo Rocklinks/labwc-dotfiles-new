@@ -7,7 +7,8 @@ horizontal_menu="$HOME/.config/rofi/horizontal_menu.rasi"
 
 # --- Main Menu ---
 main_options="Yes\nNo"
-main_choice=$(echo -e "$main_options" | rofi -dmenu -mesg "<b>Footer in menu?</b>" -theme "$horizontal_menu")
+main_choice=$(echo -e "$main_options" | rofi -dmenu -mesg "<b>Footer in menu?</b>" -theme "$horizontal_menu" \
+    -hover-select -me-select-entry '' -me-accept-entry MousePrimary)
 
 # --- Handle the choice with a case statement ---
 case "$main_choice" in
