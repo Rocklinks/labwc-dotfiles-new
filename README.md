@@ -20,6 +20,10 @@ A ready to use configuration for **Labwc** wayland compositor with 19 preconfigu
 
    **And many more.....**
 
+  ## Wallpaper
+![Dynamic Wallpaper Showcase] [Wallpaper 1](https://github.com/Rocklinks/labwc-dotfiles-new/blob/main/Screenshot_20260102-152501.png) [Wallpaper 2](https://github.com/Rocklinks/labwc-dotfiles-new/blob/main/Screenshot_20260104-094835.png)
+*Generated theme colors from this wallpaper using Matugen*
+
   ## Dependencies
   
 `labwc`, `waybar`, `rofi`, `matugen`, `adw-gtk-theme`, `dunst`, `swww`, `polkit-gnome`, `gnome-keyring`, `wl-clipboard`, `cliphist`, `wl-clip-persist`, `swayidle`, `hyprlock`, `imagemagick`, `ffmpegthumbnailer`, `ffmpeg`, `otf-font-awesome`, `inter-font`, `ttf-roboto`, `papirus-icon-theme`, `qt5-wayland`, `qt6-wayland`, `nm-connection-editor`, `gammastep`, `wf-recorder`, `grim`, `slurp`, `playerctl`,`xfce4-panel`, `kdeconnect`, `swaync``labwc-tweaks`, `blueman`. 
