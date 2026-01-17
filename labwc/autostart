@@ -36,9 +36,9 @@ wl-paste --type image --watch cliphist store &
 # kdeconnect indicator
 (sleep 2; kdeconnect-indicator >/dev/null 2>&1 &)
 
-# labwc 
-systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+# X11 auth for root apps (Thunar sudo/pkexec)
+xhost +SI:localuser:root
+xhost +SI:localuser:$USER
 
 # Notification 
 swaync >/dev/null 2>&1 &
