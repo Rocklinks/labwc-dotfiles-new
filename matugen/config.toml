@@ -26,8 +26,8 @@ output_path = '~/.config/gtk-4.0/colors/wallpaper.css'
 #output_path = '~/.config/qt5ct/colors/matugen.conf'
 
 [templates.dunst]
-input_path = '~/.config/matugen/templates/swaync-style.css'
-output_path = '~/.config/swaync/style.css'
+input_path = '~/.config/matugen/templates/swaync.css'
+output_path = '~/.config/swaync/colors.css'
 post_hook = 'swaync-client -R'
 
 
