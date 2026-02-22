@@ -11,6 +11,21 @@ alias update="sudo pacman -Syu --noconfirm --disable-download-timeout"
 alias clean="sudo pacman -Scc --noconfirm; yay -Scc --noconfirm; sudo paccache -r"
 alias c="clear"
 alias fastfetch="fastfetch"
-alias pkexec="~/.local/bin/root"
 
+function sudo
+    command sudo env \
+        WAYLAND_DISPLAY=$WAYLAND_DISPLAY \
+        XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR \
+        DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS \
+        $argv
+end
+
+
+function pkexec
+    command pkexec env \
+        WAYLAND_DISPLAY=$WAYLAND_DISPLAY \
+        XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR \
+        DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS \
+        $argv
+end
 
