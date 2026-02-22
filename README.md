@@ -29,10 +29,11 @@ A ready to use configuration for **Labwc** wayland compositor with 19 preconfigu
 
   ## Dependencies
   
-`labwc`, `waybar`, `rofi`, `rofi`, `lftp`,`udisks`,`udisks2`,`gnome-disk-utility`, `xorg-xhost`, `network-manager-applet` `matugen`, `adw-gtk-theme`, `swww`, `polkit-gnome`, `gnome-keyring`, `wl-clipboard`, `cliphist`, `wl-clip-persist`, `swayidle`, `hyprlock`, `imagemagick`, `ffmpegthumbnailer`, `ffmpeg`, `otf-font-awesome`, `inter-font`, `ttf-roboto`, `papirus-icon-theme`, `qt5-wayland`, `qt6-wayland`, `nm-connection-editor`, `gammastep`, `wf-recorder`, `grim`, `slurp`, `playerctl`,`xfce4-panel`, `kdeconnect`, `swaync``labwc-tweaks`, `blueman`. 
+`labwc`, `waybar`, `rofi`,`gnome-disk-utility`, `network-manager-applet` `matugen`, `adw-gtk-theme`, `swww`, `polkit-gnome`, `gnome-keyring`, `swayidle`, `hyprlock`, `imagemagick`, `ffmpegthumbnailer`, `ffmpeg`, `otf-font-awesome`, `inter-font`, `ttf-roboto`, `papirus-icon-theme`, `qt5-wayland`, `qt6-wayland`, `nm-connection-editor`, `wf-recorder`, `grim`, `slurp`, `playerctl`,`cairo-dock` , `cairo-dock-plug-ins`, `kdeconnect`, `swaync`,`labwc-tweaks`, `nwg-look`,`blueman`. 
 
 
 
 ## Credits and Thanks
 harsh for the labwc dotfiles: https://github.com/Harsh-bin/modern-labwc.git
+
 Ml4w for the Hyprland Dotfiles: https://github.com/mylinuxforwork/dotfiles.git
